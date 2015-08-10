@@ -30,11 +30,11 @@ namespace Plugin
         /// <param name="context">Area context</param>
         public override void RegisterArea(AreaRegistrationContext context)
         {
-            context.MapRoute(
-                "Plugin", 
-                "Plugin/{controller}/{action}/{id}", 
-                new { controller = "Plugin", action = "Index", id = UrlParameter.Optional },
-                new[] { "Plugin.Controllers" });
+            context.Routes.MapRoute(
+                name: "Plugin", 
+                url: "Plugin/{controller}/{action}/{id}", 
+                defaults: new { controller = "Plugin", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "Plugin.Controllers" });
         } 
     }
 }
