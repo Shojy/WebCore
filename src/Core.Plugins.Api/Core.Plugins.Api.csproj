@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IBinder.cs" />
+    <Compile Include="ITypeBinder.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Hooks\ApplicationStartHooks.cs" />
     <Compile Include="Hooks\ControlPanelHooks.cs" />

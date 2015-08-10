@@ -1,5 +1,4 @@
-﻿#region Header
-// <copyright company="Joshua Moon" file="HooksHandler.cs">
+﻿// <copyright company="Joshua Moon" file="HooksHandler.cs">
 //     Copyright (c) 2015 Joshua Moon All Rights Reserved.
 // </copyright>
 // <summary>
@@ -10,8 +9,6 @@
 // This software may be modified and distributed under the terms of the MIT license. See the LICENSE
 // file for details.
 // </license>
-
-#endregion Header
 
 namespace Core.Plugins.Api.Hooks.Communications
 {
@@ -89,10 +86,19 @@ namespace Core.Plugins.Api.Hooks.Communications
         /// </summary>
         /// <typeparam name="THookType">Interface containing the hook to run.</typeparam>
         /// <param name="hookName">Name of the hook to be executed within plugins.</param>
-        /// <param name="hookParams">Object data to pass into the hook meethod called.</param>
-        public static void RunHooks<THookType>(string hookName, params object[] hookParams)
+        /// <param name="hookParams">
+        /// Object data to pass into the hook method called. If the hook being called has
+        /// reference-type parameters (e.g. ref or out), these values may be updated.
+        /// </param>
+        /// <returns>
+        /// A list of objects returned by any hooked methods. The object may be null if the hook had
+        /// a void return type.
+        /// </returns>
+        public static IEnumerable<object> RunHooks<THookType>(string hookName, params object[] hookParams)
             where THookType : class, IHook
         {
+            var results = new List<object>();
+
             foreach (var hook in Hooks[typeof(THookType)])
             {
                 var implementor = Activator.CreateInstance(hook);
@@ -102,13 +108,15 @@ namespace Core.Plugins.Api.Hooks.Communications
                         hookName,
                         BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
 
-                    method.Invoke(implementor, hookParams);
+                    results.Add(method.Invoke(implementor, hookParams));
                 }
                 catch (ArgumentException ex)
                 {
                     throw new ArgumentOutOfRangeException("Specified method does not exist on hook.", ex);
                 }
             }
+
+            return results;
         }
 
         /// <summary>

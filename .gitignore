@@ -158,5 +158,6 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 /Plugins/Plugin/Views
-/src/Core/Core/Areas/Plugin/Views
-/src/Core/Plugins/Plugin
+/src/Core/Plugins/
+!*/.gitkeep
+.vs/
