@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<plugin id="sample_plugin">
+  <name>Sample Plugin</name>
+  <description>Sample plugin for testing the system.</description>
+  <version>0.1.0-dev</version>
+  <icon>~/Content/Images/PluginIcon.png</icon>
+
+  <!-- TODO Implement plugin dependencies -->
+  <dependencies>
+    <dependency id="test_plugin" version="0.1" />
+  </dependencies>
+</plugin>
