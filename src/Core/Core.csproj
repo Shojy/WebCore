@@ -143,7 +143,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="CoreControllerFactory.cs" />
     <Compile Include="CoreRazorViewEngine.cs" />
-    <Compile Include="CoreVirtualPathProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
