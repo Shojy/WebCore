@@ -62,7 +62,7 @@ namespace Core.Plugins.Api.Hooks.Communications.Tests
         /// when accessed.
         /// </summary>
         [TestMethod]
-        public void UnknownKeyReturnsEmptyList()
+        public void Indexer_UnknownKeyReturnsEmptyList()
         {
             var key = typeof(IEnumerable);
 
@@ -79,7 +79,7 @@ namespace Core.Plugins.Api.Hooks.Communications.Tests
         /// Tests that values can be added using the Add method, and correctly retrieved via index.
         /// </summary>
         [TestMethod]
-        public void ValuesCanBeAddedAndRetrievedTest()
+        public void Add_ValuesCanBeAddedAndRetrieved()
         {
             var key = typeof(IEnumerable);
             var value = new List<Type>() { typeof(string), typeof(TestMethodAttribute) };
@@ -94,7 +94,7 @@ namespace Core.Plugins.Api.Hooks.Communications.Tests
         /// Tests that a value can be added by a key that does not previously exist.
         /// </summary>
         [TestMethod]
-        public void ValuesCanBeAddedByKey()
+        public void Indexer_ValuesCanBeAddedByKey()
         {
             var key = typeof(IEnumerable);
             var value = new List<Type>() { typeof(string), typeof(TestMethodAttribute) };

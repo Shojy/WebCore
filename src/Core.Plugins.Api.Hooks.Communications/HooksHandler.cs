@@ -43,7 +43,7 @@ namespace Core.Plugins.Api.Hooks.Communications
                 return _hooks ?? (_hooks = new HooksCache());
             }
 
-            set
+            private set
             {
                 _hooks = value;
             }

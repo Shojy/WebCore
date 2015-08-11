@@ -22,7 +22,7 @@ namespace Core.Plugins.Api.Hooks.Communications
     /// <summary>
     /// Represents a collection of identified hook implementing types.
     /// </summary>
-    public sealed class HooksCache : Dictionary<Type, List<Type>>
+    public class HooksCache : Dictionary<Type, List<Type>>
     {
         #region Public Indexers
 

@@ -12,10 +12,43 @@
 
 namespace Core.Plugins.Api.Hooks.Communications.Tests
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using Moq;
+
     /// <summary>
     /// The hooks handler tests.
     /// </summary>
+    [TestClass]
     public class HooksHandlerTests
     {
+        private Mock<HooksCache> _mockCache;
+
+        /// <summary>
+        /// Initializes the tests
+        /// </summary>
+        [TestInitialize]
+        public void Init()
+        {
+            this._mockCache = new Mock<HooksCache>();
+
+            typeof(HooksHandler).SetProperty("Hooks", this._mockCache.Object);
+        }
+
+        /// <summary>
+        /// Cleans up the tests after being run.
+        /// </summary>
+        [TestCleanup]
+        public void Cleanup()
+        {
+            typeof(HooksHandler).SetProperty("Hooks", null);
+            this._mockCache = null;
+        }
+
+        [TestMethod]
+        public void TestExtensions_MockIsAssignedCorrectly()
+        {
+            Assert.AreSame(this._mockCache.Object, HooksHandler.Hooks);
+        }
     }
 }
