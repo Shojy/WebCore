@@ -19,8 +19,13 @@ namespace Core.Tests.Controllers
     using System.Web.Mvc;
 
     using Core.Controllers;
+    using Core.Plugins.Api;
+    
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using Moq;
+    
 
     /// <summary>
     /// Provides tests for <see cref="HomeController" />.
@@ -35,6 +40,8 @@ namespace Core.Tests.Controllers
         /// </summary>
         private HomeController _controller;
 
+        private Mock<ILogger> _mockLogger;
+
         #endregion Private Fields
 
         #region Public Methods
@@ -47,6 +54,7 @@ namespace Core.Tests.Controllers
         {
             this._controller.Dispose();
             this._controller = null;
+            this._mockLogger = null;
         }
 
         /// <summary>
@@ -68,7 +76,8 @@ namespace Core.Tests.Controllers
         [TestInitialize]
         public void Init()
         {
-            this._controller = new HomeController();
+            this._mockLogger = new Mock<ILogger>();
+            this._controller = new HomeController(this._mockLogger.Object);
         }
 
         #endregion Public Methods

@@ -18,11 +18,20 @@ namespace Core.Controllers
 {
     using System.Web.Mvc;
 
+    using Core.Plugins.Api;
+    
+
     /// <summary>
     /// The home controller.
     /// </summary>
     public class HomeController : Controller
     {
+        private ILogger _logger;
+
+        public HomeController(ILogger logger)
+        {
+            this._logger = logger;
+        }
         #region Public Methods
 
         /// <summary>

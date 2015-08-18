@@ -36,6 +36,7 @@ namespace Core
 
     using Ninject;
     using Ninject.Extensions.Conventions;
+    using Ninject.Extensions.Logging.Log4net;
     using Ninject.Web.Common;
 
     /// <summary>
@@ -133,6 +134,8 @@ namespace Core
                     }
                 }
             }
+
+            //kernel.Load(new Log4NetModule());
         }
 
         #endregion Private Methods

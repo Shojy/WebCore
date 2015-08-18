@@ -17,6 +17,7 @@
 namespace Core
 {
     using System;
+    using System.Linq;
     using System.Net;
     using System.Reflection;
     using System.Web;
@@ -24,8 +25,13 @@ namespace Core
     using System.Web.Mvc;
     using System.Web.Routing;
 
+    using log4net;
+    using log4net.Core;
+
     using Ninject;
+    using Ninject.Activation;
     using Ninject.Extensions.Conventions;
+    using Ninject.Extensions.Logging.Log4net;
 
     /// <summary>
     /// Represents the controller factory for loading plugin-based controllers
@@ -94,13 +100,18 @@ namespace Core
         /// </summary>
         private void AddBindings()
         {
-            var assemblies = BuildManager.GetReferencedAssemblies();
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            //var assemblies = BuildManager.GetReferencedAssemblies();
 
-            foreach (Assembly assembly in assemblies)
+            //this._ninjectKernel.Load(new Log4NetModule());
+            foreach (var assembly in assemblies.Where(a => !a.IsDynamic))
             {
-                this._ninjectKernel.Bind(a => a.From(assembly).SelectAllClasses().BindDefaultInterface());
+                var asm = assembly;
+                this._ninjectKernel.Bind(a => a.From(asm).SelectAllClasses().BindDefaultInterface());
+                
             }
         }
+        
 
         #endregion Private Methods
     }
