@@ -30,6 +30,8 @@ namespace Core
     using System.Web;
     using System.Web.Compilation;
 
+    using Core.Plugins.Api;
+
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
