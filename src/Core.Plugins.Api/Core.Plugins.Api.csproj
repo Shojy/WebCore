@@ -45,6 +45,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -64,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBinder.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="ITypeBinder.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Hooks\ApplicationStartHooks.cs" />
@@ -74,6 +76,8 @@
     <Compile Include="Hooks\INavigationHooks.cs" />
     <Compile Include="Hooks\NavigationHooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reference.cs" />
+    <Compile Include="Theme.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

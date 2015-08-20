@@ -30,10 +30,13 @@ namespace Core
     using System.Web;
     using System.Web.Compilation;
 
+    using Core.Plugins.Api;
+
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
     using Ninject.Extensions.Conventions;
+    using Ninject.Extensions.Logging.Log4net;
     using Ninject.Web.Common;
 
     /// <summary>
@@ -131,6 +134,8 @@ namespace Core
                     }
                 }
             }
+
+            //kernel.Load(new Log4NetModule());
         }
 
         #endregion Private Methods

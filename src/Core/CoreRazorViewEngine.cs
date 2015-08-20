@@ -20,6 +20,8 @@ namespace Core
     using System.IO;
     using System.Web.Mvc;
 
+    using Core.Plugins.Api;
+
     /// <summary>
     /// Represents a view engine that is used to render a web page that is capable of rendering
     /// pages for plugin-based views.
